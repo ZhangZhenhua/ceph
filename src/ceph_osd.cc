@@ -96,6 +96,8 @@ int main(int argc, const char **argv)
   global_init(&def_args, args, CEPH_ENTITY_TYPE_OSD, CODE_ENVIRONMENT_DAEMON, 0);
   ceph_heap_profiler_init();
 
+  dout(0) << "Welcome to EonStor!" << dendl;
+
   // osd specific args
   bool mkfs = false;
   bool mkjournal = false;

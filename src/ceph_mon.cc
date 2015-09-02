@@ -261,6 +261,8 @@ int main(int argc, const char **argv)
               CEPH_ENTITY_TYPE_MON, CODE_ENVIRONMENT_DAEMON, flags);
   ceph_heap_profiler_init();
 
+  dout(0) << "Welcome to EonStor!" << dendl;
+
   uuid_d fsid;
   std::string val;
   for (std::vector<const char*>::iterator i = args.begin(); i != args.end(); ) {
