@@ -86,6 +86,7 @@ enum {
   l_osd_sop,
   l_osd_sop_inb,
   l_osd_sop_lat,
+  l_osd_sop_c_lat,
   l_osd_sop_w,
   l_osd_sop_w_inb,
   l_osd_sop_w_lat,

@@ -2211,6 +2211,7 @@ void OSD::create_logger()
   osd_plb.add_u64_counter(l_osd_sop,       "subop");         // subops
   osd_plb.add_u64_counter(l_osd_sop_inb,   "subop_in_bytes");     // subop in bytes
   osd_plb.add_time_avg(l_osd_sop_lat,   "subop_latency");     // subop latency
+  osd_plb.add_time_avg(l_osd_sop_c_lat,   "subop_cycle_latency");     // subop cycle latency
 
   osd_plb.add_u64_counter(l_osd_sop_w,     "subop_w");          // replicated (client) writes
   osd_plb.add_u64_counter(l_osd_sop_w_inb, "subop_w_in_bytes");      // replicated write in bytes
