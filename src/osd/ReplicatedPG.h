@@ -526,6 +526,7 @@ public:
     MOSDOpReply *reply;
 
     utime_t readable_stamp;  // when applied on all replicas
+    utime_t sop_issue_stamp; // when sop is issued to all replicas
     ReplicatedPG *pg;
 
     int num_read;    ///< count read ops

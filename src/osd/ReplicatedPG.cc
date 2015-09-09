@@ -2361,6 +2361,7 @@ void ReplicatedPG::execute_ctx(OpContext *ctx)
 
   repop->src_obc.swap(src_obc); // and src_obc.
 
+  ctx->sop_issue_stamp = ceph_clock_now(cct);
   issue_repop(repop);
 
   eval_repop(repop);
@@ -2397,6 +2398,10 @@ void ReplicatedPG::log_op_stats(OpContext *ctx)
     rlatency = ctx->readable_stamp;
     rlatency -= ctx->op->get_req()->get_recv_stamp();
   }
+  utime_t clatency;
+  clatency = ceph_clock_now(cct);
+  clatency -= ctx->sop_issue_stamp;
+
 
   uint64_t inb = ctx->bytes_written;
   uint64_t outb = ctx->bytes_read;
@@ -2407,6 +2412,7 @@ void ReplicatedPG::log_op_stats(OpContext *ctx)
   osd->logger->inc(l_osd_op_inb, inb);
   osd->logger->tinc(l_osd_op_lat, latency);
   osd->logger->tinc(l_osd_op_process_lat, process_latency);
+  osd->logger->tinc(l_osd_sop_c_lat, clatency);
 
   if (op->may_read() && op->may_write()) {
     osd->logger->inc(l_osd_op_rw);
